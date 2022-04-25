@@ -116,7 +116,7 @@ def confirm():
 		return jsonify({'message': 'error, el link ha caducado o es invalido'})
 
 
-@url_usuario.route('/login', methods=['GET', 'POST'])
+@url_usuario.route('/login', methods=['GET', 'POST']) # Sensitive
 def login_user():
 
 	auth = request.authorization
@@ -141,7 +141,7 @@ def nuevo_vinculo():
 		if (Usuario.query.filter_by(id_vinculo=id_vinculo).first() == None):
 			return id_vinculo
 
-# el usuario no recuerda su contraseña. se le envia un link  a su email
+# el usuario no recuerda su contraseÃ±a. se le envia un link  a su email
 
 
 @url_usuario.route('/pedirnuevapass', methods=['GET'])
@@ -170,7 +170,7 @@ def nuevapass():
 	) + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
 	return jsonify({'token': token.decode('UTF-8')})
 
-# cambio de contraseña, solo se puede usar si el usuario tiene un token valido.
+# cambio de contraseÃ±a, solo se puede usar si el usuario tiene un token valido.
 
 
 @url_usuario.route('/cambiopass', methods=['PUT'])
