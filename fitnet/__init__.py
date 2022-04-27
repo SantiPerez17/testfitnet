@@ -2,7 +2,8 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['WTF_CSRF_ENABLED'] = False
+csrf = CSRFProtect()
+csrf.init_app(app)
 app.config['SECRET_KEY'] = 'c9f2907c6e760b384f32e59aae8cd529'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:root@localhost:5432/flask"
